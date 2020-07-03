@@ -169,9 +169,11 @@ function createIntern(){
 }
 
 function generateHTML(){
-    fs.writeFileSync("./output/team.html", render(userList), function(err){
+    fs.writeFileSync(outputPath, render(userList), function(err){
         if(err) throw err;
     });
+
+    mainMenu();
 }
 
 function deleteUser(){
