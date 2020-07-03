@@ -11,6 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const { createSecureServer } = require("http2");
 const { async } = require("rxjs/internal/scheduler/async");
+const Employee = require("./lib/Employee");
 
 // Variable creation ==========================================================
 let userList = [];
@@ -168,8 +169,9 @@ function createIntern(){
 }
 
 function generateHTML(){
-    console.log(userList);
-    mainMenu();
+    fs.writeFileSync("./output/team.html", render(userList), function(err){
+        if(err) throw err;
+    });
 }
 
 function deleteUser(){
